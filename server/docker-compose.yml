@@ -26,6 +26,7 @@ services:
     environment:
       - username=collabora
       - password=collabora
+      - VIRTUAL_PROTO=https
       #- extra_params=--o:ssl.enable=false
 
   mysql:
