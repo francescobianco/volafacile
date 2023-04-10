@@ -26,7 +26,7 @@ services:
     environment:
       - username=collabora
       - password=collabora
-      - extra_params=--o:ssl.enable=false
+      #- extra_params=--o:ssl.enable=false
 
   mysql:
     build: docker/mysql
