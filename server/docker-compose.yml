@@ -11,6 +11,7 @@ services:
     volumes:
       - ./var/nextcloud:/var/www/html
     environment:
+      - NEXTCLOUD_TRUSTED_DOMAINS=192.168.144.23
       - NEXTCLOUD_ADMIN_USER=nextcloud
       - NEXTCLOUD_ADMIN_PASSWORD=nextcloud
       - MYSQL_USER=nextcloud
