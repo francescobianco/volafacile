@@ -15,9 +15,9 @@ cd /opt/volafacile
 echo "==> Update"
 echo "$1" | sudo -S git pull
 
-if [ ! -f .env ]; then
-  echo "$1" | sudo -S cp .env.prod .env
+if [ ! -f server/.env ]; then
+  echo "$1" | sudo -S cp server/.env.prod server/.env
 fi
 
 echo "==> Restart"
-echo "$1" | sudo -S make restart
+echo "$1" | sudo -S make server-restart
