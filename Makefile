@@ -25,6 +25,9 @@ server-reset:
 server-ssh:
 	@sshpass -p $${SERVER_PASSWORD} ssh $${SERVER_USER}@${SERVER_HOST} -p $${SERVER_PORT:-22} bash -s -- $${SERVER_PASSWORD}
 
+server-shell:
+	@sshpass -p $${SERVER_PASSWORD} ssh $${SERVER_USER}@${SERVER_HOST} -p $${SERVER_PORT:-22}
+
 ## ======
 ## Deploy
 ## ======
