@@ -56,7 +56,7 @@ services:
       - FTP_HOST=192.168.144.50
       - FTP_USER=backup
       - FTP_PASS=Backup1234!
-      - REMOTE_PATH=/ftp/user/backup
+      - REMOTE_PATH=/Machines/Volafacile
     volumes:
       - ./var/mysql:/data/mysql
       - ./var/nextcloud:/data/nextcloud
