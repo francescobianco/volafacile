@@ -15,8 +15,11 @@ server-nextcloud-log:
 server-mysql-log:
 	cd server && docker compose logs -f mysql
 
-server-restart:
-	@cd server && docker compose up -d
+server-pull:
+	@cd server && docker compose pull --include-deps -q
+
+server-restart: server-pull
+	@cd server && docker compose up -d --build --force-recreate
 
 server-reset:
 	@sudo rm -fr server/var/mysql server/var/nextcloud
