@@ -53,6 +53,7 @@ services:
       - DB_USER=root
       - DB_PASS=nextcloud
       - DB_NAME=nextcloud
+      - FTP_PROTO=ftps
       - FTP_HOST=192.168.144.50
       - FTP_USER=backup
       - FTP_PASS=Backup1234!
