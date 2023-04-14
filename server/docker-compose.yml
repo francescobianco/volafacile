@@ -44,4 +44,22 @@ services:
     ports:
       - 9998:8080
 
-
+  backup:
+    image: javanile/backup
+    command:
+      - '* * * * * /usr/local/bin/backup.sh daily'
+    environment:
+      - DB_HOST=mysql
+      - DB_USER=root
+      - DB_PASS=secret
+      - DB_NAME=demo
+      - FTP_HOST=192.168.144.50
+      - FTP_USER=backup
+      - FTP_PASS=Backup1234
+      - REMOTE_PATH=/ftp/user/backup
+    volumes:
+      - ./var/mysql:/data/mysql
+      - ./var/nextcloud:/data/nextcloud
+    links:
+      - ftp
+      - mysql
