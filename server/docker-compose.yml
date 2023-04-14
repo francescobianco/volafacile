@@ -55,7 +55,7 @@ services:
       - DB_NAME=nextcloud
       - FTP_HOST=192.168.144.50
       - FTP_USER=backup
-      - FTP_PASS=Backup1234
+      - FTP_PASS=Backup1234!
       - REMOTE_PATH=/ftp/user/backup
     volumes:
       - ./var/mysql:/data/mysql
