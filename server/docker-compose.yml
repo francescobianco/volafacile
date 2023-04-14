@@ -51,8 +51,8 @@ services:
     environment:
       - DB_HOST=mysql
       - DB_USER=root
-      - DB_PASS=secret
-      - DB_NAME=demo
+      - DB_PASS=nextcloud
+      - DB_NAME=nextcloud
       - FTP_HOST=192.168.144.50
       - FTP_USER=backup
       - FTP_PASS=Backup1234
@@ -61,5 +61,4 @@ services:
       - ./var/mysql:/data/mysql
       - ./var/nextcloud:/data/nextcloud
     links:
-      - ftp
       - mysql
