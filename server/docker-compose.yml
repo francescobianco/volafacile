@@ -6,6 +6,9 @@ services:
     build: docker/nginx
     ports:
       - 9990:80
+    links:
+      - nextcloud
+      - collabora
 
   nextcloud:
     build: docker/nextcloud
