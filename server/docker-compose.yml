@@ -2,6 +2,11 @@ version: "3"
 
 services:
 
+  nginx:
+    build: docker/nginx
+    ports:
+      - 9990:80
+
   nextcloud:
     build: docker/nextcloud
     ports:
