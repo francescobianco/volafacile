@@ -47,7 +47,7 @@ services:
   backup:
     image: javanile/backup
     command:
-      - '* * * * * /usr/local/bin/backup.sh daily'
+      - '0 0 * * * /usr/local/bin/backup.sh daily'
     environment:
       - DB_HOST=mysql
       - DB_USER=root
