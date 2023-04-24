@@ -9,6 +9,9 @@ export $(shell test -f .env && cut -d= -f1 .env)
 server-init: server-guacamole-init
 	@echo "Server init: OK!"
 
+server-up:
+	cd server && docker compose up -d
+
 server-ps:
 	cd server && docker compose ps
 
@@ -65,3 +68,6 @@ test-server-nextcloud:
 test-server-guacamole:
 	@cd server && docker compose up -d --build --force-recreate guacamole guacd
 	@echo "Visit: <http://localhost:9970/guacamole/>"
+
+test-server-backup: server-up
+	@cd server && docker compose exec backup /usr/local/bin/backup.sh
