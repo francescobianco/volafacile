@@ -6,11 +6,23 @@ export $(shell test -f .env && cut -d= -f1 .env)
 ## Server
 ## ======
 
+server-init: server-guacamole-init
+	@echo "Server init: OK!"
+
 server-ps:
 	cd server && docker compose ps
 
 server-nextcloud-log:
 	cd server && docker compose logs -f nextcloud
+
+server-guacamole-init:
+	@cd server && \
+		docker compose run --rm guacamole /opt/guacamole/bin/initdb.sh --mysql > initdb.sql && \
+		docker compose exec -T mysql sh -c 'MYSQL_PWD=$$MYSQL_ROOT_PASSWORD mysql -u root -h 0.0.0.0 $$MYSQL_DATABASE' < initdb.sql || true && \
+		rm initdb.sql
+
+server-guacamole-log:
+	cd server && docker compose logs -f guacamole
 
 server-mysql-log:
 	cd server && docker compose logs -f mysql
@@ -49,3 +61,7 @@ deploy-server:
 test-server-nextcloud:
 	@cd server && docker compose up -d --build --force-recreate nextcloud collabora mysql adminer
 	@echo "Visit: <http://localhost:9999>"
+
+test-server-guacamole:
+	@cd server && docker compose up -d --build --force-recreate guacamole guacd
+	@echo "Visit: <http://localhost:9970/guacamole/>"
