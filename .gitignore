@@ -1,2 +1,3 @@
 server/var/mysql/
+server/var/nextcloud/
 .env
