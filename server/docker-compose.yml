@@ -9,6 +9,7 @@ services:
     links:
       - nextcloud
       - collabora
+    restart: always
 
   nextcloud:
     build: docker/nextcloud
@@ -26,6 +27,7 @@ services:
       - MYSQL_PASSWORD=nextcloud
       - MYSQL_DATABASE=nextcloud
       - MYSQL_HOST=mysql
+    restart: always
 
   collabora:
     build: docker/collabora
@@ -35,6 +37,7 @@ services:
       - username=collabora
       - password=collabora
       - extra_params=--o:ssl.enable=false --o:ssl.termination=true
+    restart: always
 
   guacamole:
     image: guacamole/guacamole:1.5.1
@@ -50,11 +53,13 @@ services:
     links:
       - guacd
       - mysql
+    restart: always
 
   guacd:
     image: guacamole/guacd:1.5.1
     ports:
       - 4822:4822
+    restart: always
 
   mysql:
     build: docker/mysql
@@ -66,11 +71,13 @@ services:
       - MYSQL_USER=nextcloud
       - MYSQL_PASSWORD=nextcloud
       - MYSQL_DATABASE=nextcloud
+    restart: always
 
   adminer:
     image: adminer
     ports:
       - 9998:8080
+    restart: always
 
   backup:
     image: javanile/backup
@@ -91,3 +98,4 @@ services:
       - ./var/nextcloud:/data/nextcloud
     links:
       - mysql
+    restart: always
